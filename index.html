@@ -138,5 +138,24 @@
 
         switchLang('ru');
     </script>
+    <script>
+    function trackVisitor() {
+        let data = {
+            referrer: document.referrer || "none", // Откуда пришел посетитель
+            userAgent: navigator.userAgent, // Браузер, ОС
+            url: window.location.href, // Открытая страница
+            screen: `${window.screen.width}x${window.screen.height}`, // Разрешение экрана
+            time: new Date().toISOString() // Время визита
+        };
+
+        fetch("https://webhook.site/91112643-1829-46fd-b6f4-9cd6abe5d01e", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+    }
+
+    trackVisitor();
+</script>
 </body>
 </html>
