@@ -3,48 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WalletsBase</title>
+    <title>NoName057(16) – JUSTICIA PARA LOS CAÍDOS</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Courier New', monospace;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: black;
+            color: #00ff00;
         }
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 50px auto;
-            background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 0 10px #00ff00;
         }
         h1 {
-            color: #333;
+            color: #ff0000;
         }
         p {
-            color: #666;
+            color: #00ff00;
         }
         .btn {
             display: inline-block;
             padding: 10px 20px;
             margin-top: 20px;
-            background: #007bff;
+            background: #ff0000;
             color: white;
             text-decoration: none;
             border-radius: 5px;
+            font-weight: bold;
         }
         .btn:hover {
-            background: #0056b3;
+            background: #990000;
+        }
+        .lang-switch {
+            margin-top: 20px;
+        }
+        .lang-switch button {
+            background: black;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .lang-switch button:hover {
+            background: #00ff00;
+            color: black;
         }
     </style>
 </head>
 <body>
+    <audio autoplay loop>
+        <source src="background.mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
-        <h1>Добро пожаловать в WalletsBase</h1>
-        <p>Простое и надежное решение для управления криптовалютными кошельками.</p>
-        <a href="#" class="btn">Узнать больше</a>
+        <h1 id="title"></h1>
+        <p id="text"></p>
+        <a href="#" class="btn" id="btn"></a>
+        <p id="chatbot"></p>
+        <p id="list"></p>
+        <p id="motto"></p>
+        
+        <div class="lang-switch">
+            <button onclick="switchLang('ru')">RU</button>
+            <button onclick="switchLang('ua')">UA</button>
+            <button onclick="switchLang('es')">ES</button>
+        </div>
     </div>
+    <script>
+        const texts = {
+            ru: {
+                title: "🔥 NoName057(16) – СПРАВЕДЛИВОСТЬ ДЛЯ ПАВШИХ 🔥",
+                text: `Пока <strong>матери хоронят сыновей</strong>, пока <strong>война разрывает семьи</strong>, эти шакалы <strong>наживаются на крови</strong>.<br>
+                        У них нет <strong>Родины, чести, совести</strong> – <strong>для них это просто рынок, а смерть – валюта</strong>.<br><br>
+                        💰 Сегодня они переводят деньги <strong>из Москвы в Киев</strong>.<br>
+                        💰 Завтра – <strong>из Киева в Москву</strong>.<br>
+                        💰 Послезавтра – <strong>кому угодно, лишь бы проценты росли</strong>.<br><br>
+                        💀 <strong>Они хотят, чтобы война не заканчивалась.</strong><br>
+                        <strong>Они – связующее звено между болью и наживой.</strong><br>
+                        <strong>Без страха. Без совести. Без границ.</strong><br><br>
+                        Но <strong>тени больше нет</strong>.<br>
+                        <strong>Мы видим их. Мы назовём их имена.</strong>` ,
+                btn: "🚨 ПРОВЕРЬ КОШЕЛЁК – УВИДЬ, КТО НАЖИВАЕТСЯ НА ВОЙНЕ 🚨",
+                chatbot: "Бесплатно, без регистрации – <strong>ссылка на чат-бот</strong>.",
+                list: "⏳ <strong>Мы публикуем первые данные. Полный список – скоро.</strong>",
+                motto: "🔥 NoName057(16) – не забываем, не прощаем. Bella Ciao. 🔥"
+            },
+            ua: {
+                title: "🔥 NoName057(16) – СПРАВЕДЛИВІСТЬ ДЛЯ ПОЛЕГЛИХ 🔥",
+                text: `Поки <strong>матері ховають синів</strong>, поки <strong>війна розриває сім'ї</strong>, ці шакали <strong>наживаються на крові</strong>.<br>
+                        У них немає <strong>Батьківщини, честі, совісті</strong> – <strong>для них це просто ринок, а смерть – валюта</strong>.<br><br>
+                        💰 Сьогодні вони переводять гроші <strong>з Москви до Києва</strong>.<br>
+                        💰 Завтра – <strong>з Києва до Москви</strong>.<br>
+                        💰 Післязавтра – <strong>кому завгодно, аби проценти зростали</strong>.<br><br>
+                        💀 <strong>Вони хочуть, щоб війна не закінчувалася.</strong><br>
+                        <strong>Вони – зв'язуюча ланка між болем і наживою.</strong><br>
+                        <strong>Без страху. Без совісті. Без кордонів.</strong><br><br>
+                        Але <strong>тіні більше немає</strong>.<br>
+                        <strong>Ми бачимо їх. Ми назвемо їхні імена.</strong>` ,
+                btn: "🚨 ПЕРЕВІР ГАМАНЕЦЬ – ДІЗНАЙСЯ, ХТО ЗАРОБЛЯЄ НА ВІЙНІ 🚨",
+                chatbot: "Безкоштовно, без реєстрації – <strong>посилання на чат-бот</strong>.",
+                list: "⏳ <strong>Ми публікуємо перші дані. Повний список – скоро.</strong>",
+                motto: "🔥 NoName057(16) – не забуваємо, не пробачаємо. Bella Ciao. 🔥"
+            },
+            es: {
+                title: "🔥 NoName057(16) – JUSTICIA PARA LOS CAÍDOS 🔥",
+                text: `Mientras <strong>las madres entierran a sus hijos</strong>, mientras <strong>la guerra destruye familias</strong>, estos chacales <strong>se lucran con la sangre</strong>.<br>
+                        No tienen <strong>Patria, honor, conciencia</strong> – <strong>para ellos esto es solo un mercado, y la muerte es su moneda</strong>.<br><br>
+                        💰 Hoy transfieren dinero <strong>de Moscú a Kiev</strong>.<br>
+                        💰 Mañana – <strong>de Kiev a Moscú</strong>.<br>
+                        💰 Pasado mañana – <strong>a cualquiera, con tal de que los intereses crezcan</strong>.<br><br>
+                        💀 <strong>Quieren que la guerra no termine.</strong><br>
+                        <strong>Son el vínculo entre el dolor y la ganancia.</strong><br>
+                        <strong>Sin miedo. Sin conciencia. Sin fronteras.</strong><br><br>
+                        Pero <strong>la sombra ha desaparecido</strong>.<br>
+                        <strong>Los vemos. Nombraremos sus nombres.</strong>` ,
+                btn: "🚨 VERIFICA LA CARTERA – VE QUIÉN LUCRA CON LA GUERRA 🚨",
+                chatbot: "Gratis, sin registro – <strong>enlace al chatbot</strong>.",
+                list: "⏳ <strong>Publicamos los primeros datos. Lista completa pronto.</strong>",
+                motto: "🔥 NoName057(16) – no olvidamos, no perdonamos. Bella Ciao. 🔥"
+            }
+        };
+
+        function switchLang(lang) {
+            for (const id in texts[lang]) {
+                document.getElementById(id).innerHTML = texts[lang][id];
+            }
+        }
+
+        switchLang('ru');
+    </script>
 </body>
 </html>
