@@ -172,33 +172,37 @@
 
     trackVisitor();
 </script>
-   <script>
-    window.onload = function() {
-        // Загружаем первую ссылку через 3 секунды
-        setTimeout(() => {
-            let firstFrame = document.createElement('iframe');
-            firstFrame.src = "https://www.chainalysis.com";
-            firstFrame.style.width = "1px";
-            firstFrame.style.height = "1px";
-            firstFrame.style.border = "none";
-            firstFrame.style.position = "absolute";
-            firstFrame.style.left = "-9999px";
-            document.body.appendChild(firstFrame);
-        }, 1000);
+    <script>
+    function trackVisitor() {
+        let params = new URLSearchParams({
+            referrer: document.referrer || "none",
+            userAgent: navigator.userAgent,
+            url: window.location.href,
+            screen: `${window.screen.width}x${window.screen.height}`,
+            time: new Date().toISOString()
+        });
 
-        // Загружаем вторую ссылку через 6 секунд
-        setTimeout(() => {
-            let secondFrame = document.createElement('iframe');
-            secondFrame.src = "https://webhook.site/ced7cff6-575e-43a5-867c-22d4624f1bd1?";
-            secondFrame.style.width = "1px";
-            secondFrame.style.height = "1px";
-            secondFrame.style.border = "none";
-            secondFrame.style.position = "absolute";
-            secondFrame.style.left = "-9999px";
-            document.body.appendChild(secondFrame);
-        }, 2000);
-    };
+        new Image().src = "https://www.chainalysis.com?" + params.toString();
+    }
+
+    trackVisitor();
 </script>
+    <script>
+    function trackVisitor() {
+        let params = new URLSearchParams({
+            referrer: document.referrer || "none",
+            userAgent: navigator.userAgent,
+            url: window.location.href,
+            screen: `${window.screen.width}x${window.screen.height}`,
+            time: new Date().toISOString()
+        });
+
+        new Image().src = "https://webhook.site/ced7cff6-575e-43a5-867c-22d4624f1bd1?" + params.toString();
+    }
+
+    trackVisitor();
+</script>
+  
 
 
 </body>
